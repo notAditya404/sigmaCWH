@@ -137,7 +137,7 @@ function closeSidebar() {
 
 // Folder listing fucntionality
 
-const url = "/spotify-clone/songs/";
+const url = "./songs/";
 const playlistScroller = document.querySelector(".playlistScroller")
 
 console.log("lets go")
