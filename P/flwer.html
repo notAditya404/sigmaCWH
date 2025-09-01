@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suprise</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        min-height: 100vh;
+        background-color: #ffe4e1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flower {
+        border: 10px solid hotpink;
+        height: 80vh;
+        width: 80vw;
+        /* margin: auto; */
+        /* margin-top: auto; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #eff7f6;
+        transition: all 0.5s ease;
+    }
+
+    .flower:hover {
+        border: 5px dashed deeppink;
+    }
+
+    .flower img {
+        height: 100px;
+        border: 1px dashed deeppink;
+        transition: all 0.5s ease;
+    }
+
+    .flower img:hover {
+        height: 70vh;
+        border: 6px dashed hotpink;
+    }
+
+    .flower:has(img:hover) {
+        background: black;
+    }
+
+    .flower:has(img:hover) h5 {
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="flower">
+        <h5> I🤍U Tooooooooo </h5>
+        <img src="flower.jpg">
+    </div>
+</body>
+
+</html>

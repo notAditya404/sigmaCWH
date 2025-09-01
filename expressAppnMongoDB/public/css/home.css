@@ -1,0 +1,25 @@
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.769);
+    height: 50vh;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#dataGenBtn{
+    background-color: rgb(61, 61, 158);
+    border: none;
+    color: rgba(252, 251, 251, 0.813);
+    padding: 20px;
+}
+
+#dataGenBtn:hover{
+    background-color: rgb(97, 97, 164);
+}
+
+.center > p {
+    color: white;
+    font-size: larger;
+}

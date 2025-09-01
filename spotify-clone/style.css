@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.app-box {
+    background-color: black;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+}
+
+.sidebar {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: all .5s ease-out;
+    min-width: 250px;
+    left: 0;
+    background-color: black;
+}
+
+
+.logo-box> :last-child {
+    display: none;
+}
+
+.sidebar-nav {
+    background-color: #121212;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    border-radius: 7px;
+}
+
+.logo-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+#logo {
+    height: 35px;
+}
+
+#home {
+    height: 15px;
+}
+
+#search {
+    height: 15px;
+}
+
+.main {
+    background-color: #121212;
+    width: 75%;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+
+.lib {
+    background-color: #121212;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 7px;
+    overflow: hidden;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.songLogoList{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    gap: 30px;
+}
+
+.song-logoBox {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#songLogo {
+    height: 30px;
+}
+
+.song-logoBox>span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.song-list {
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* max-height: 373px; */
+    padding: 7px;
+}
+
+.songinfo {
+    display: flex;
+    border: 2px solid grey;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.songinfo:hover{
+    background-color: #1d2626;
+}
+
+.songname {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.playNow {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+
+.legal-links {
+    display: flex;
+    list-style: none;
+    font-size: 10px;
+    font-weight: 400;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.legal-links a {
+    color: rgb(128, 128, 128);
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    /* min-height: 70px; */
+    background-color: #222222;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.arrow> :first-child {
+    display: none;
+}
+
+.arrow>img {
+    margin-right: 10px;
+}
+
+.loginOp {
+    display: flex;
+    gap: 25px;
+}
+
+.signup-btn {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(156, 148, 148);
+    background: none;
+    cursor: pointer;
+    border: none;
+}
+
+.login-btn {
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px 15px;
+}
+
+
+.playlist-Box {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding: 20px 20px 80px 20px;
+    /* justify-content: space-between; */
+    gap: 20px;
+}
+
+.playlistScroller {
+    height: calc(100% - 180px);
+    width: 95%;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow: auto;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+}
+
+.folder {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: fit-content;
+    padding: 20px 10px 10px 10px;
+    gap: 12px;
+    border-radius: 5px;
+    background-color: #252525;
+    cursor: pointer;
+}
+
+.playCircle{
+    background-color: #1fdf64;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    position: absolute;
+    right: 15px;
+    bottom: 90px;
+    display: none;
+}
+
+.folder:hover{
+    background-color: #696767;
+
+    .playCircle{
+        display: flex;
+    }
+}
+
+.folder>img {
+    width: 200px;
+}
+
+.control-Box {
+    background-color: #1d2626;
+    position: fixed;
+    height: 100px;
+    width: 70%;
+    bottom: 30px;
+    padding: 10px 5px 2px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.above-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls {
+    margin-left: 110px;
+}
+
+.controls>button {
+    background: none;
+    border: none;
+}
+
+.controls img {
+    width: 35px;
+    height: 35px;
+}
+
+
+.time-volume {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.volume-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.seekbar>input {
+    width: 100%;
+    color: white;
+}
+
+
+@media screen and (max-width:1060px) {
+    .folder {
+        width: 40%;
+    }
+
+    .folder>img {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:900px) {
+    .logo-box> :last-child {
+        display: block;
+    }
+
+    .arrow> :first-child {
+        display: inline;
+    }
+
+    .hide-sidebar {
+        /* transform: translateX(calc(-100% - 15px)); */
+        left: -100%;
+        /* display: none; */
+    }
+
+    .main {
+        background-color: #121212;
+        min-width: 100%;
+        border-radius: 7px;
+    }
+
+    .app-box {
+        padding: 0px;
+    }
+
+    .control-Box {
+        width: 90%;
+        height: fit-content;
+        gap: 5px;
+        font-size: small;
+        bottom: 15px;
+        /* background-color: #12121253; */
+    }
+
+    .above-bar {
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+
+    }
+
+    .controls {
+        margin-left: 0px;
+    }
+
+    .playlistScroller {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        overflow: auto;
+        align-self: center;
+    }
+
+    .folder {
+        width: 80%;
+    }
+
+    .controls img {
+        width: 30px;
+        height: 25px;
+    }
+
+    input[type="range"] {
+        height: 4px;
+    }
+
+    .sidebar {
+        min-width: 80vw;
+        position: absolute;
+        z-index: 5;
+    }
+}

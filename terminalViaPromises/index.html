@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "VT323", monospace;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      gap: 10px;
+      padding: 20px 20px;
+      /* background-image:
+        linear-gradient(to bottom, rgba(0, 128, 0, 0.498), rgba(0, 128, 0, 0.893)), url('white-tiles-wall.jpg');
+      background-position: center center;
+      background-size: cover; */
+      background-color: black;
+    }
+    
+    .container>h1 {
+      color: green;
+    }
+
+    .container > h1>span::after {
+      animation: blinker 1s linear 1 forwards;
+      content: "";
+    }
+
+    @keyframes blinker {
+      33% {
+        content: ".";
+      }
+
+      66% {
+        content: "..";
+      }
+
+      100% {
+        content: "...";
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- <h1 class="msg">>>>Initializing Hacking<span class="dots"></span></h1> -->
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

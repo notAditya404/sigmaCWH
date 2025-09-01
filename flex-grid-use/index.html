@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .main-content {
+            /* background-color: beige; */
+            background-color: white;
+            min-height: 85vh;
+            padding: 10vh 20vh;
+        }
+
+        .logo-img {
+            height: 4em;
+        }
+
+        .search-icon {
+            height: 4vh;
+        }
+
+        .flex-nav {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 13vh;
+            background-color: white;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 1.5em;
+        }
+
+        .links {
+            text-decoration: none;
+            color: black;
+        }
+
+        .links:hover {
+            color: rgba(0, 0, 0, 0.746);
+        }
+
+        .buy-btn {
+            padding: 10px 20px;
+            background-color: white;
+            font-weight: bolder;
+            border-radius: 4px;
+        }
+
+        .lang-btn {
+            border: none;
+            background-color: white;
+            font-size: medium;
+            font-weight: 350;
+        }
+
+        .right-comps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .center-comps {
+            display: flex;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .heading {
+            display: flex;
+            align-items: center;
+            column-gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .hotfix-link {
+            text-decoration: none;
+            color: black;
+        }
+
+        .grid-box {
+            justify-content: center;
+            gap: 15px;
+            margin-top: 5vh;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .exe-flexbox {
+            background-color: #f9f9f9;
+            padding: 16px;
+            box-sizing: border-box;
+            height: 170px;
+            width: 270px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .exe-flexbox>span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .exe-flexbox > span > p{
+            font-size: xx-small;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        .exe-link {
+            text-decoration: none;
+            background-color: #5cb85c;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+        }
+
+        @media screen and (max-width: 1070px) {
+            
+            .grid-box {
+            grid-template-columns: auto auto;
+        }
+        }
+        @media screen and (max-width: 700px) {
+            
+            .grid-box {
+            grid-template-columns: auto;
+        }
+        
+        }
+
+
+        .down-arrow {
+            height: 10px;
+            transition: transform .4s ease-in-out;
+        }
+
+        .center-comps > a:hover .down-arrow{
+            transform: rotate(180deg);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="nav-container">
+        <nav class="flex-nav">
+            <div>
+                <img class="logo-img" src="logo.png" alt="">
+            </div>
+
+            <div class="center-comps">
+                <a href="" class="links">Product <img class="down-arrow" src="down-arrow.png" alt="" srcset=""></a>
+                <a href="" class="links">Prices <img class="down-arrow" src="down-arrow.png" alt="" srcset=""></a>
+                <a href="" class="links">Resources <img class="down-arrow" src="down-arrow.png" alt="" srcset=""></a>
+                <a href="" class="links">Our company <img class="down-arrow" src="down-arrow.png" alt="" srcset=""></a>
+            </div>
+
+            <div class="right-comps">
+                <button class="buy-btn">BUY NOW</button>
+                <button class="lang-btn">English</button>
+
+                <img src="search.png" alt="" class="search-icon">
+            </div>
+        </nav>
+    </header>
+    <main class="main-content">
+        <div class="heading">
+            <img src="logo.png" alt="" style="height: 5vh;">
+            <p>Download UltraEdit <small>v2025.0 (released 2025-07-07) | <a class="hotfix-link" href="https://www.ultraedit.com/updates/uehotfix/">Hotfix information</a></small></p>
+        </div>
+
+        <div class="grid-box">
+            <div class="exe-flexbox">
+                <h4>English</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>Deutsch</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>Italiano</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>Español</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>français</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>Português brasileiro</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>日本</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>한국어</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>华语</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+            <div class="exe-flexbox">
+                <h4>華語</h4><span><a class="exe-link" href="ue_english_64.exe">Download 64-bit</a><small>SHA256</small><p style="font-size: xx-small;">9D1BDB4E51D6333CB226C43A5C76146C4B909B228C4A7C128888264053772EBB</p></span>
+            </div>
+    </main>
+</body>
+
+</html>

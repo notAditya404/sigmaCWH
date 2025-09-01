@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Varela&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto Mono", monospace;
+        }
+
+        body {
+            background-color: grey;
+        }
+
+        .calbody {
+            background-color: rgb(235, 232, 232);
+            background-color: #1e1e2f;
+            margin: 20px;
+            border: 2px solid black;
+            border-radius: 15px;
+            width: 260px;
+            min-height: 350px;
+            padding: 5px;
+        }
+
+        .screen {
+            border: 2px solid black;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f1f1f1;
+            height: 167.5px;
+            border-radius: 15px;
+            padding: 7px;
+        }
+
+        .num-box {
+            margin-top: 5px;
+            min-height: 167.5px;
+            width: 100%;
+            margin-left: 1px;
+        }
+
+        .btn {
+            border-radius: 20px;
+            height: 52.8px;
+            width: 54px;
+            border-color: white;
+        }
+
+        .exp {
+            position: relative;
+            top: 130px;
+            width: 100%;
+            height: 25px;
+            text-align: end;
+            overflow: auto;
+        }
+
+        .del-btn {
+            background-color: white;
+            overflow: hidden;
+        }
+
+        img {
+            width: 40%;
+            border-radius: 20px;
+        }
+
+        .nums {
+            background-color: #e0e0e0;
+        }
+
+        .clr {
+            background-color: #cc6c7a;
+        }
+
+        .op {
+            background-color: #5a90b8;
+        }
+
+        .btn:hover {
+            background-color: rgb(148, 245, 245);
+            transition: background-color 0.3 ease;
+        }
+
+        .btn:active {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calbody">
+        <div class="screen">
+            <p class="exp"></p>
+        </div>
+        <div class="num-box">
+            <button class="btn clr" onclick="driver('ac')">AC</button>
+            <button class="btn op" onclick="driver('(')">(</button>
+            <button class="btn op" onclick="driver(')')">)</button>
+            <button class="btn op" onclick="driver('/')">/</button>
+            <button class="btn nums" onclick="driver('7')">7</button>
+            <button class="btn nums" onclick="driver('8')">8</button>
+            <button class="btn nums" onclick="driver('9')">9</button>
+            <button class="btn op" onclick="driver('x')">x</button>
+            <button class="btn nums" onclick="driver('4')">4</button>
+            <button class="btn nums" onclick="driver('5')">5</button>
+            <button class="btn nums" onclick="driver('6')">6</button>
+            <button class="btn op" onclick="driver('-')">-</button>
+            <button class="btn nums" onclick="driver('1')">1</button>
+            <button class="btn nums" onclick="driver('2')">2</button>
+            <button class="btn nums" onclick="driver('3')">3</button>
+            <button class="btn op" onclick="driver('+')">+</button>
+            <button class="btn nums" onclick="driver('0')">0</button>
+            <button class="btn nums" onclick="driver('.')">.</button>
+            <button class="btn nums del-btn" onclick="driver('clr')"><img src="delete_icon.png" alt=""></button>
+            <button class="btn op eq" onclick="driver('=')">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

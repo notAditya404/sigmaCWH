@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box Model</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .parent {
+            min-height: 50vh;
+            /* height: 50vh; */
+            width: 90%;
+            max-width: 350px;
+            border: 2px solid grey;
+            border-radius: 20px;
+            /* padding: 5px; */
+            margin: 10px;
+            overflow: hidden;
+        }
+
+        .upper {
+            display: flex;
+            width: 100%;
+            height: 50%;
+            /* border: 2px solid skyblue; */
+            border-radius: 20px;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+
+        .lower {
+            position: relative;
+            width: 100%;
+            min-height: 50%;
+            /* border: 2px solid pink; */
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding: 5px;
+            padding-bottom: 50px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        li {
+            margin: 3px;
+            padding: 3px;
+            display: inline;
+            list-style: none;
+            border: 2px solid pink;
+            border-radius: 20px;
+        }
+        .button {
+            position: absolute;
+            bottom: 10px;
+            left:50%;
+            transform: translateX(-50%);
+
+            /* border: 2px solid pink; */
+            border-radius: 200px;
+            padding: 4px;
+            cursor: pointer;
+            background-color: #d8e6f7;
+        }
+        a {
+            color: #0070cc;
+            background-color: #d8e6f7;
+            font-weight: 500;
+            font-family: 'Segoe UI', sans-serif;
+            text-decoration: none;
+        }
+        h2{
+            margin: 2px;
+            padding: 2px;
+        }
+
+        p{
+            margin: 2px;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="upper">
+            <img src="download.jpg" alt="lake image">
+        </div>
+        <div class="lower">
+            <ul>
+                <li>Nature</li>
+                <li>Lake</li>
+            </ul>
+            <h2>
+                Lorem, ipsum dolor.
+            </h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt soluta voluptatibus voluptas itaque recusandae eligendi veniam sint dicta illo placeat! Recusandae, maxime provident. Molestias alias doloribus, magni explicabo praesentium perferendis numquam! Obcaecati, aliquid assumenda.</p>
+            <div class="button">
+                <a href="https://www.youtube.com/">Youtube</a>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

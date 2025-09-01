@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    /* font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", "Roboto", "Ubuntu", sans-serif; */
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+.wrapper-first-box {
+    min-height: 700px;
+    height: 95vh;
+    /* background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+        url('images/bgs/main_bg.jpg'); */
+
+    background-image:
+        radial-gradient(circle, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+        url('images/bgs/main_bg.jpg');
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+
+.wrapper-first-box> :not(.curve-container) {
+    padding: 20px 150px 0px 150px;
+}
+
+.firstBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.logo {
+    width: 180px;
+}
+
+.logo-lang-sign {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading-pricing-email-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.text {
+    color: white;
+}
+
+.heading {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 16px;
+}
+
+.pricing {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.email-top {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-sign {
+    background-color: rgb(229, 9, 20);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 5px;
+    border: none;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.lang-selector {
+    background-color: transparent;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.lang-selector>option {
+    color: black;
+}
+
+.lang-sign {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.email-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.email-user {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* width: 30%;
+            height: 56px; */
+    width: 366px;
+    height: 56px;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 4px;
+    caret-color: grey;
+    color: white;
+    padding-left: 15px;
+}
+
+.email-user::placeholder {
+    font-size: medium;
+    color: rgb(202, 200, 200);
+}
+
+.ready-btn {
+    /* width: 20%; */
+    width: 213.25;
+    background-color: rgb(229, 9, 20);
+    color: white;
+    padding: 4px 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    height: 56px;
+    font-size: x-large;
+}
+
+.curve-container {
+    /* height: 6.25rem; */
+    height: 75px;
+    background: radial-gradient(50% 500% at 50% -420%, rgba(64, 97, 231, 0.4) 80%, rgba(0, 0, 0, 0.1) 100%), black;
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    border-top: 4px solid #ca3a3a;
+}
+
+.bottom-section {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 150px 150px 150px;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+.box-heading {
+    font-weight: 600;
+    color: white;
+}
+
+.movie-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.poster-box {
+    display: flex;
+    gap: 40px;
+    margin-left: 10px;
+    padding: 15px 0px;
+    overflow:auto
+}
+
+.poster {
+    position: relative;
+    padding-left: 20px;
+    transition: transform 0.2s linear;
+}
+
+.img-container {
+    width: 180px;
+    height: 252px;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.img-container.first {
+    background-image: url("images/bgs/squid_game.webp");
+}
+.img-container.second {
+    background-image: url("images/bgs/great_indian.webp");
+}
+.img-container.third {
+    background-image: url("images/bgs/raid_2.webp");
+}
+.img-container.fourth {
+    background-image: url("images/bgs/aap_jaisa.webp");
+}
+.img-container.fifth {
+    background-image: url("images/bgs/hit_3.webp");
+}
+
+.poster:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+}
+
+.poster>span {
+    color: black;
+    text-shadow:
+        2px 2px 1px white,
+        -2px 2px 1px white,
+        -2px -2px 0 white,
+        2px -2px 0 white;
+    left: 6px;
+    position: absolute;
+    bottom: 0px;
+    font-size: 100px;
+    font-weight: 700;
+}
+
+.reason-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-box {
+    display: flex;
+    gap: 20px;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background-image: linear-gradient(to top, rgb(57 57 107 / 20%), rgb(57 57 107 / 60%));
+    /* background-color: rgb(57 57 107 / 57%); */
+    padding: 20px 14px;
+    height: 400px;
+    width: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+
+}
+
+.card-text>p {
+    color: #eae9e9ba;
+    font-weight: 400;
+}
+
+.card-text>h3 {
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.card>svg {
+    align-self: end;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.faq-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ques-box {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(45, 45, 45);
+    align-items: center;
+    padding: 25px 20px;
+    color: white;
+    min-width: 200px;
+}
+
+.ques-box>p {
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.ques-box:hover {
+    background-color: rgb(62 60 60);
+    cursor: pointer;
+}
+
+
+.ques-box > svg{
+    min-width: 24px;
+    min-height: 24px;
+}
+
+.faqs {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.help-box {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.link-grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 15px;
+}
+
+.link-grid>a {
+    color: #ffffffad;
+    font-size: small;
+    font-weight: 500;
+}
+
+
+
+.number {
+    color: #ffffffad;
+    /* font-size: small; */
+    font-weight: 500;
+}
+
+.number>a {
+    color: #ffffffad;
+}
+
+.lang-selector.down-lang {
+    width: 125px;
+}
+
+.site-name {
+    color: #ffffffad;
+    font-size: small;
+    font-weight: 500;
+}
+
+.copyright {
+    color: #ffffff87;
+    font-size: small;
+    font-weight: 500;
+}
+
+.copyright>a {
+    color: rgb(113 138 240);
+    ;
+}
+
+.bottom-email-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.bottom-email {
+    width: 500px;
+}
+
+
+@media screen and (max-width: 980px) {
+    .card-box {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+    }
+
+    .wrapper-first-box> :not(.curve-container) {
+        padding: 20px 50px 0px 50px;
+    }
+
+    .bottom-section {
+        padding: 20px 50px 150px 50px;
+    }
+
+    .heading {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+
+    .pricing {
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 32px;
+    }
+
+    .email-top {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .logo {
+        width: 100px;
+        min-width: 92px;
+    }
+
+
+}
+
+
+@media screen and (max-width: 850px) {
+    .link-grid {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .link-grid {
+        grid-template-columns: auto;
+    }
+
+    .wrapper-first-box> :not(.curve-container) {
+        padding: 20px 25px 0px 25px;
+    }
+
+    .bottom-section {
+        padding: 20px 25px 150px 25px;
+    }
+
+    .box-heading {
+        font-size: 18px;
+    }
+
+    .card-text>h3 {
+        font-size: 20px;
+    }
+
+
+    .card-text>p {
+        font-size: 16px;
+    }
+
+    .ques-box>p {
+        font-size: 18px;
+    }
+
+    .img-container {
+    width: 140px;
+    height: 196px;
+}
+
+.poster-box {
+    gap: 10px;
+}
+
+.poster>span {
+    font-size: 80px;
+    font-weight: 700;
+}
+}
+
+@media screen and (max-width: 650px) {
+    .curve-container {
+        height: 35px;
+    }
+
+    .email-user {
+        height: 45px;
+    }
+
+    .ready-btn {
+        height: 45px;
+    }
+
+    .wrapper-first-box {
+        height: 50vh;
+    }
+
+    .lang-selector {
+        padding: 5px 10px;
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    .btn-sign {
+        padding: 5px 10px;
+        font-size: 10px;
+        font-weight: bolder;
+    }
+}

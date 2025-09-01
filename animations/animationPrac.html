@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+            background-color: aqua;
+            padding: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .boxContainer{
+            display: flex;
+            width: 500px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: grey;
+            grid-row: 1/2;
+            grid-column: 1/2;
+        }
+
+        .topBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-row: 1/2;
+            grid-column: 1/2;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(64, 91, 209, 0.383);
+            transition: transform 0.5s linear;
+            cursor: pointer;
+        }
+
+        .scaleX:hover {
+            transform: scaleX(1.5);
+        }
+
+        .scaleY:hover {
+            transform: scaleY(1.5);
+        }
+
+        .scale:hover {
+            transform: scale(1.5);
+        }
+        
+        .translateX:hover {
+            transform: translateX(20px);
+        }
+        
+        .translateY:hover {
+            transform: translateY(20px);
+        }
+        
+        .translate:hover {
+            transform: translate(20px, 10px);
+        }
+
+        .matrix:hover {
+            transform: matrix(1, -1, 0, 1, 0, 0);
+        }
+        .rotate:hover {
+            transform: rotate(90deg)
+        }
+        .skew:hover {
+            transform: skew(45deg, 30deg)
+        }
+        .skewX:hover {
+            transform: skewX(30deg)
+        }
+        .skewY:hover {
+            transform: skewY(45deg)
+        }
+        .matrix3d:hover {
+            transform: matrix3d(0.8535533905932737, 0.4999999999999999, 0.14644660940672619, 0, -0.4999999999999999, 0.7071067811865476, 0.4999999999999999, 0, 0.14644660940672619, -0.4999999999999999, 0.8535533905932737, 0, 22.62994231491119, -20.3223304703363, 101.3700576850888, 1)
+        }
+        .translate3d:hover {
+            transform: translate3d(10px, 20px, -30px)
+        }
+        
+        .rotateY:hover {
+            transform: rotateY(45deg)
+        }
+        .rotateX:hover {
+            transform: rotateX(45deg)
+        }
+        .translateZ:hover {
+            transform: rotate3d(3, 2, 2, 90deg) translateZ(500px)
+        }
+        
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div class="boxContainer">
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox scaleX">scaleX</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox scaleY">scaleY</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox scale">scale</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox translateX">translateX</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox translateY">translateY</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox translate">translate</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox matrix">matrix</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate">rotate</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate skew">skew</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate skewX">skewX</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate skewY">skewY</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate matrix3d">matrix3d</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate translate3d">translate3d</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate rotateY">rotateY</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate rotateX">rotateX</div>
+            </div>
+            <div class="wrapper">
+                <div class="box"></div>
+                <div class="box topBox rotate translateZ">translateZ</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

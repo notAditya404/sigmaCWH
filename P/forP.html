@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafafa;
+        }
+
+        .container {
+            display: grid;
+            background-color: #00bcd4;
+            height: 25vh;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+
+        }
+
+        .box {
+            width: 33.33%;
+            height: 50px;
+            background-color: #ffc107;
+            grid-column: 2/3;
+            grid-row: 2/3;
+            z-index: 1;
+            border-radius: 6px;
+            text-align: center;
+            align-content: center;
+            color: #333333;
+        }
+
+        @media screen and (max-width: 800px) {
+            .box {
+                font-size: small;
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            .box {
+                font-size: xx-small;
+            }
+        }
+
+        .buttonwrap {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        p {
+            grid-column: 2/3;
+            grid-row: 2/4;
+            justify-self: center;
+            transition: all 2s ease-in-out;
+            color: #ffd54f;
+            font-weight: 500;
+            font-family: 'Playfair Display', 'Poppins', 'Pacifico';
+            text-shadow: rgba(0, 150, 136, 0.3);
+        }
+
+        .panimate {
+            font-size: 32px;
+        }
+
+        .box1 {
+            transition: transform 2s ease-in;
+        }
+
+        .box2 {
+            justify-self: center;
+            transition: transform 2s ease-in-out;
+        }
+
+        .box3 {
+            justify-self: end;
+            transition: transform 2s ease-in-out;
+        }
+
+        .box1hover {
+            bottom: 0px;
+            transform: translateY(300px) translateX(-100px) rotate(-45deg);
+        }
+
+        .box2hover {
+            bottom: 0px;
+            transform: translateY(300px);
+        }
+
+        .box3hover {
+            bottom: 0px;
+            transform: translateY(300px) translateX(100px) rotate(45deg);
+        }
+
+        .buttonwrap>button {
+            background-color: #1565c0;
+            color: #e3f2fd;
+            border-radius: 15px;
+            padding: 5px 10px;
+        }
+
+        .buttonwrap>button:hover {
+            background-color: #1565c0b9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"">
+        <div class=" box box1">Secret</div>
+    <div class="box box2">message</div>
+    <div class="box box3">here</div>
+    <p>Love You</p>
+    </div>
+
+    <div class="buttonwrap">
+        <button onclick="breaker()">You know what to do</button>
+    </div>
+    <script>
+        function breaker() {
+            let boxList = document.getElementsByClassName("box")
+
+            let msg = document.getElementsByTagName("p")[0]
+
+            let box1 = boxList[0]
+            let box2 = boxList[1]
+            let box3 = boxList[2]
+
+
+            box1.classList.add("box1hover")
+            box2.classList.add("box2hover")
+            box3.classList.add("box3hover")
+
+            msg.classList.add("panimate")
+
+            setTimeout(settle, 3000)
+        }
+
+        function settle() {
+            let boxList = document.getElementsByClassName("box")
+
+            let box1 = boxList[0]
+            let box2 = boxList[1]
+            let box3 = boxList[2]
+
+            let msg = document.getElementsByTagName("p")[0]
+
+
+
+            box1.classList.remove("box1hover")
+            box2.classList.remove("box2hover")
+            box3.classList.remove("box3hover")
+
+            msg.classList.remove("panimate")
+        }
+    </script>
+</body>
+
+</html>

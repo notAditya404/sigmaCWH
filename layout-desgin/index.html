@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout - Design</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Varela&display=swap');
+        
+
+        :root {
+            --navbgr-clr: rgb(222, 131, 219);
+            --contentbox-clr: rgb(18, 16, 16);
+            --footerbg-clr: rgb(135, 231, 231);
+            --box-containerbg: green;
+            --box1-bg: pink;
+            --box2-bg: rgb(107, 107, 196);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0px;
+            background-color: var(--navbgr-clr);
+            height: 10vh;
+        }
+
+        .content {
+            background-color: var(--contentbox-clr);
+            min-height: 80vh;
+            padding: 10px 15px 0px 15px;
+        }
+
+        .foot {
+            background-color: var(--footerbg-clr);
+            height: 10vh;
+        }
+
+        .box-container {
+            background-color: var(--box-containerbg);
+            height: 50vh;
+        }
+
+        .box {
+            display: inline-block;
+            width: 40%;
+            height: 45vh;
+            margin-top: 2.5vh;
+            margin-bottom: 2.5vh;
+        }
+
+        .box1 {
+            background-color: var(--box1-bg);
+            margin-right: 2.5%;
+            margin-left: 7.5%;
+        }
+
+        .box2 {
+            background-color: var(--box2-bg);
+            margin-right: 7.5%;
+            margin-left: 2.5%;
+        }
+
+        .msg {
+            font-family: "Poppins", sans-serif;
+            color: white;
+            text-align: center;
+            border: 1px solid white;
+            border-radius: 20px;
+            margin: 4px 15px 0px 15px;
+            transition: font-size 2s ease;
+            overflow: auto;
+        }
+
+        .msg:hover{
+            font-size: 40px;
+        }
+
+        .floater{
+            position: fixed;
+            bottom: 10px;
+            right: 5px;
+            height: 70px;
+            width: 70px;
+            border-radius: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav"></header>
+    <main class="content">
+        <div class="box-container">
+            <span class="box box1"></span><span class="box box2"></span>
+        </div>
+        <p class="msg">
+            Welcome to this Sigma Web Development Express
+        </p>
+        <div class="floater"></div>
+        <div style="height: 100vh;"></div>
+    </main>
+    <footer class="foot"></footer>
+</body>
+
+</html>

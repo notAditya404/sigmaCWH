@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic -CARD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI";
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: black;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            align-items: flex-start;
+        }
+
+        .card:hover {
+            background-color: #403e3ebf;
+        }
+
+        .thumbnail {
+            min-height: 150px;
+            min-width: 270px;
+
+            background-image: url('thumbnail.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        /* 9:5 */
+        .img-sec {
+            min-height: 150px;
+            min-width: 270px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .text-sec {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .heading {
+            font-size: 22px;
+            color: white;
+        }
+
+        .metadata {
+            display: flex;
+            color: #afafaf;
+            font-weight: 450;
+            gap: 5px;
+        }
+
+
+        .timestamp {
+            background-color: rgba(0, 0, 0, 0.757);
+            font-weight: bold;
+            color: white;
+            position: absolute;
+            bottom: 7px;
+            right: 7px;
+            border-radius: 5px;
+            padding: 2px 5px;
+        }
+
+        .button-wrapper {
+            display: flex;
+            position: fixed;
+            bottom: 5px;
+            justify-content: center;
+            width: 100vw;
+
+        }
+
+        @media screen and (max-width:630px) {
+            .container {
+                padding: 2px 5px;
+            }
+
+            .card {
+                gap: 5px;
+                padding: 10px 10px;
+            }
+
+            .img-sec {
+                min-height: 100px;
+                min-width: 180px;
+            }
+
+            .thumbnail {
+                min-height: 100px;
+                min-width: 180px;
+            }
+
+            .text-sec {
+                gap: 5px;
+            }
+
+            .metadata {
+                font-weight: 450;
+                font-size: small;
+                gap: 5px;
+            }
+
+            .heading {
+                font-size: 17px;
+                color: white;
+            }
+
+            .timestamp {
+                font-weight: bold;
+                padding: 2px 5px;
+                font-size: small;
+            }
+        }
+
+        @media screen and (max-width:460px) {
+            .container {
+                padding: 20px 20px;
+                overflow-x: auto;
+            }
+
+            .card {
+                gap: 10px;
+                padding: 5px 5px;
+            }
+
+            .img-sec {
+                min-height: 75px;
+                min-width: 135px;
+            }
+
+            .thumbnail {
+                min-height: 75px;
+                min-width: 135px;
+            }
+
+            .text-sec {
+                gap: 5px;
+
+            }
+
+            .metadata {
+                font-weight: 450;
+                font-size: xx-small;
+                gap: 5px;
+
+            }
+
+            .heading {
+                font-size: small;
+                color: white;
+                font-weight: 400;
+            }
+
+            .timestamp {
+                font-weight: 600;
+                padding: 2px 5px;
+                font-size: x-small;
+            }
+
+            .heading {
+                width: 164px;
+                height: 35px;
+                color: white;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="img-sec">
+                <div class="thumbnail"></div>
+                <p class="timestamp">31:20</p>
+            </div>
+            <div class="text-sec">
+                <h2 class="heading">Installing VS Code & How Websites Work | Sigma Web Development Course-Tutorial
+                    #1
+                </h2>
+                <div class="metadata">
+                    <p>CodeWithHarry</p><strong>&middot;</strong>
+                    <p>727K views</p><b>&middot;</b>
+                    <p>July</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-wrapper">
+        <button onclick="genrateCard()">Click to add card</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
