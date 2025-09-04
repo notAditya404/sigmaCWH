@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.navbar ul .active{
+    text-decoration: underline;
+}
+
+.error{
+    color: red;
+    font-size: small;
+}
