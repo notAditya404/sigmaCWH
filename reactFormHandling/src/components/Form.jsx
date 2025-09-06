@@ -4,42 +4,17 @@ const Form = () => {
 
   const [errors, seterrors] = useState({})
 
-  function checkForm(form) {
-    let iserror = false;
-    let errorObj = {}
-    //name verfication
-    if(form.get('name').length <= 3){
-      errorObj['name'] = "Name must be longer than 3 letter"
-      console.log(errorObj)
-    }
-    if(form.get('gender').length == 0){
-      errorObj['gender'] = "Kindly select your gender"
-    }
-    if(form.getAll('residence').length != 1){
-      errorObj['residence'] = "Select one option"
-    }
-    if(form.get('address').length > 30){
-      errorObj['address'] = "Address cant be bigger than 30 letters"
-    }
-
-    if(Object.keys(errorObj).length >= 1){
-      iserror = true
-    }
-    seterrors(errorObj)
-    console.log(errors)
-    return iserror
-  }
 
   async function handleSubmit(e) {
     e.preventDefault()
+    if(Object.keys(errors).length != 0)
+    {
+      console.log("Fix your errors first")
+      return 0
+    }
     
     // get data from form  using FormData Object
     let form = new FormData(e.target)
-
-    if(checkForm(form)){
-      console.log("Fix erros before submitting")
-      return 0;
-    }
 
     let obj = {
       name: form.get("name"),
@@ -66,12 +41,38 @@ const Form = () => {
 
     console.log(res)
   }
+  
+  function handleName(e) {
+    seterrors(prevState =>{
+      let updated = {...prevState}
+      if(e.target.value.length <= 3){
+        updated.name = "Name must be longer than 3 letters"
+      }
+      else{
+        delete updated.name
+      }
+      return updated
+    })
+  }
+  
+  function handleAddress(e) {
+    seterrors(prevState =>{
+      let updated = {...prevState}
+      if(e.target.value.length >= 30){
+        updated.address = "Address must be samller than 30 letters"
+      }
+      else{
+        delete updated.address
+      }
+      return updated
+    })
+  }
 
   return (
     <form onSubmit={(event) => handleSubmit(event)}>
       <p>
         <label htmlFor="name"><b>Name:</b></label><br />
-        <input type="text" id="name" name="name"/><br />
+        <input type="text" id="name" name="name" onChange={(event)=>{handleName(event)}} /><br />
         {errors.name && <span className='error'>{errors.name}</span>}
       </p>
       <p>
@@ -86,7 +87,7 @@ const Form = () => {
         <label htmlFor="female">Female</label><br />
         <input type="radio" id="other" name="gender" value="other" />
         <label htmlFor="other">Others</label><br/>
-        {errors.gender && <span className='error'>{errors.gender}</span>}
+        {/* {errors.gender && <span className='error'>{errors.gender}</span>} */}
       </p>
       <p>
         <label htmlFor="department"><b>Department:</b></label><br />
@@ -102,11 +103,11 @@ const Form = () => {
         <label htmlFor="rural">Rural</label><br />
         <input type="checkbox" id="urban" name="residence" value="Urban" />
         <label htmlFor="urban">Urban</label><br />
-        {errors.residence && <span className='error'>{errors.residence}</span>}
+        {/* {errors.residence && <span className='error'>{errors.residence}</span>} */}
       </p>
       <p>
         <label htmlFor="address"><b>Address:</b></label><br />
-        <textarea id="address" name="address" rows="5" cols="30" defaultValue={"1697 nai abdai"}></textarea><br/>
+        <textarea id="address" name="address" rows="5" cols="30" defaultValue={"1697 nai abdai"} onBlur={(event)=>{handleAddress(event)}}></textarea><br/>
         {errors.address && <span className='error'>{errors.address}</span>}
       </p>
       <button type="submit">Submit</button>
