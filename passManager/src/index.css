@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.error{
+    color: red;
+    font-size: small;
+    margin-left: 12px;
+}
+
+.lowerBar{
+    position: relative;
+    width: 100%;
+    transition: width 2s linear;
+}
+
+.hideLowerBar{
+    width: 0;
+}
+
+.hideBox{
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .userSpecific {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .passBox,
+    .userBox {
+        width: 100%;
+    }
+
+    .topBox,
+    .lowerBox {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .actionBox {
+        flex-direction: column;
+    }
+}
