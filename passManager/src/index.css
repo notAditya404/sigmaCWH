@@ -5,7 +5,7 @@
 .error{
     color: red;
     font-size: small;
-    margin-left: 12px;
+    margin-left: 1rem;
 }
 
 .lowerBar{
@@ -43,5 +43,22 @@
 @media screen and (max-width: 400px) {
     .actionBox {
         flex-direction: column;
+    }
+    .topBox{
+        margin-top: 0px;
+    }
+    main{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .passTable{
+        grid-template-columns: auto auto auto auto;    
+    }
+    .dataUrlBox > p{
+        width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
