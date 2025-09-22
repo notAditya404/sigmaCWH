@@ -1,53 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
+import { useAuth } from '../utils/AuthContext'
+import { Navigate } from 'react-router'
 
 const Login = () => {
-    const navigate = useNavigate()
-  const [loading, setLoading] = useState(true);
-  const [ authenticated, setAuthenticated ] = useState(false);
-  
-  useEffect(() => {
-  if (authenticated) {
-    navigate("/", { replace: true });
-  }
-}, [authenticated, navigate]);
-
-  useEffect(() => {
-    async function verify() {
-      try {
-        let rawResponse = await fetch("http://localhost:3000/verify", {
-          method: "GET",
-          credentials: "include", // send cookies
-        });
-
-        let content = await rawResponse.json();
-        let { msg, success } = content;
-
-        if (success) {
-          setAuthenticated(true);
-        } else {
-          console.log(msg);
-          setAuthenticated(false);
-        }
-      } catch (err) {
-        console.error("Error verifying:", err);
-        setAuthenticated(false);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    verify();
-  }, []);
+  const navigate = useNavigate()
+  const { authenticated, setAuthenticated } = useAuth();
 
   
-
-
 
   const emailRef = useRef()
   const passRef = useRef()
-  
+
 
   const handleSubmit = async () => {
     // connecting to express server
@@ -57,24 +22,25 @@ const Login = () => {
         'Content-Type': 'application/json'
       },
       method: "POST",
-      body: JSON.stringify({email: emailRef.current.value, password: passRef.current.value}),
+      body: JSON.stringify({ email: emailRef.current.value, password: passRef.current.value }),
       credentials: "include"
     })
 
     let content = await rawResponse.json()
-    let {msg, success} = {...content}
-    if(!success){
+    let { msg, success } = { ...content }
+    if (!success) {
       return toast.error(msg)
     }
-    console.log("token", content.token)
     toast.success(msg)
-    setTimeout(()=>{
-      navigate("/", {replace: true})
+    setAuthenticated(true)
+    setTimeout(() => {
+      navigate("/", { replace: true })
     }, 1000)
 
   }
-  if (loading) {
-    return <h2>Loading...</h2>; // or a spinner
+
+  if (authenticated) {
+    return <Navigate to="/" replace />;
   }
 
 

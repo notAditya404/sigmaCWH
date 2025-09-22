@@ -59,12 +59,31 @@ app.post("/login", express.json(), async (req, res) => {
         
         const token = jwt.sign({ email: userInfo.email }, 'secret');
         res.cookie("token", token)
-        res.status(200).json({ msg: "Logged IN !!", success: true, token: token })
+        res.status(200).json({ msg: "Logged IN !!", success: true })
     });
 })
 
 
 app.get("/verify", express.json(), (req, res) => {
+    const token = req.cookies.token
+    if(!token){
+        return res.status(401).json({msg: "No token supplied", success:false})
+    }
+    jwt.verify(token, 'secret', async function (err, decoded) {
+        if(err){
+            return res.status(401).json({ msg: "Invalid token", error: err, success: false });
+        }
+        const userMail = decoded.email
+
+        const user = await User.find({email: userMail})
+        if(!user){
+            return res.status(401).json({ msg: "no user found", success: false})
+        }
+        res.status(200).json({ msg: "you can access freely", success: true})
+    });
+})
+
+app.get("/quotes", (req, res) => {
     const token = req.cookies.token
     console.log(token)
     if(!token){
