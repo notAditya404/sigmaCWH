@@ -6,11 +6,11 @@ import { Outlet } from 'react-router'
 function App() {
 
   return (
-    <div className="app ">
-      <Navbar/>
-      <Outlet title="passing"/>
-      <Footer/>
-    </div>
+    <>
+      <Navbar />
+      <Outlet title="passing" />
+      <Footer />
+    </>
   )
 }
 
