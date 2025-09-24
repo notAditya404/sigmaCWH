@@ -2,15 +2,19 @@
   "name": "passmanagerbackend",
   "version": "1.0.0",
   "description": "Express backend for connecting to mongoose for passManager",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1"
   }
 }

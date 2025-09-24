@@ -16,8 +16,9 @@ import mongoose from "mongoose"
 
 const passwordSchema = new mongoose.Schema({
   url: String,
-  user: String,
-  pass: String,
+  userName: String,
+  password: String,
+  email: String
 });
 
 

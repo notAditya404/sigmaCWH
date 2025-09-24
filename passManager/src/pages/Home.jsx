@@ -1,7 +1,4 @@
-import './App.css'
 import { useState, Fragment, useRef, useEffect } from 'react';
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 import { IoIosSave } from "react-icons/io";
 import { MdContentCopy } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
@@ -9,39 +6,67 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { IoIosClose } from "react-icons/io";
 import { GrFormViewHide } from "react-icons/gr";
 import { GrFormView } from "react-icons/gr";
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify'
+import { useAuth } from "../utils/AuthContext";
 
-function App() {
-  const [passes, setPasses] = useState(() => {
-    // localStorage.removeItem("Passes")
-    return JSON.parse(localStorage.getItem("Passes")) || [{ url: "www.youtube.com", user: "aditya123", pass: "pass123" }, { url: "www.facebook.com", user: "pinki123", pass: "pass890" }]
-  })
+function Home() {
+
+  const { setAuthenticated } = useAuth();
+  const navigate = useNavigate()
+
+  const [passes, setPasses] = useState([]); // start with empty array
+
+  useEffect(() => {
+    console.log("Rendering")
+    fetch("http://localhost:3000/passwords/passes", {credentials: "include"})
+      .then(res => res.json())
+      .then(resData => {
+        if(!resData.success){
+          console.log("here")
+          setAuthenticated(false)
+          return navigate("/login", {replace: true})
+        }
+        console.log(resData.passwords)
+        setPasses(resData.passwords); // update state when data arrives
+      })
+      .catch(err => console.error(err));
+  }, []); // run once when component mounts
+
   const [errors, seterrors] = useState({})
   const [showPass, setshowPass] = useState(false)
 
   const urlRef = useRef()
   const userRef = useRef()
   const passRef = useRef()
-  const toastRef = useRef()
-  const toastContentRef = useRef()
-  const lowerBarRef = useRef()
 
-  useEffect(() => {
-    localStorage.setItem("Passes", JSON.stringify(passes))
-  }, [passes])
 
 
   const [visible, setVisible] = useState({});
 
-  function toggleVisibility(index){
+  function toggleVisibility(index) {
     setVisible((prev) => ({
       ...prev,
       [index]: !prev[index], // toggle only this row
     })
-  );
-  console.log(visible)
+    );
+    console.log(visible)
   };
 
-  function handleDelete(index) {
+  async function handleDelete(index, id) {
+    const params = new URLSearchParams();
+    params.append("id", id);
+
+    // GET request sent to http://localhost:3000/delete?username=example
+    const response = await fetch(`http://localhost:3000/passwords/delete?${params}`, {credentials: "include"});
+    const resInfo = await response.json()
+    if(!resInfo.success){
+      setAuthenticated(false)
+      navigate("/login", {replace: true})
+      return toast.error(resInfo.msg)
+    }
+    
+    toast.success("Deleted succesfully!!")
     setPasses((prev) => {
       let updated_passes = [...prev]
       updated_passes.splice(index, 1)
@@ -52,21 +77,43 @@ function App() {
   function checkErrors(newPass) {
     let updated_errors = {}
     if (newPass.url == "") { updated_errors.url = "URL cant be blank" }
-    if (newPass.user.length < 3) { updated_errors.user = "User name cant be shorter than 3 letters" }
-    if (newPass.pass.length < 5) { updated_errors.pass = "Use a longer password" }
+    if (newPass.userName.length < 3) { updated_errors.user = "User name cant be shorter than 3 letters" }
+    if (newPass.password.length < 5) { updated_errors.pass = "Use a longer password" }
     seterrors(updated_errors)
     if (Object.keys(updated_errors).length > 0) { return true }
     else { return false }
   }
 
-  function handleSubmit() {
-    let newPass = { url: urlRef.current.value, user: userRef.current.value, pass: passRef.current.value }
+  async function handleSubmit() {
+    let newPass = { url: urlRef.current.value, userName: userRef.current.value, password: passRef.current.value }
     if (checkErrors(newPass)) {
       console.log("Fix your erros first")
-      toastHandler("error")
+      toast.error("FIx your errors first")
     }
     else {
-      toastHandler("save")
+      //updating on server
+      const response = await fetch("http://localhost:3000/passwords/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newPass),
+        credentials: "include"
+      });
+
+      const resInfo = await response.json()
+
+      if(!resInfo.success){
+        setAuthenticated(false)
+        navigate("/login", {replace: true})
+        return toast.error("unautohrized")
+      }
+      
+      toast.success("Password saved !!")
+      newPass._id = resInfo.id
+      console.log(newPass)
+      console.log("id of added:", resInfo)
+
       setPasses(prev => {
         return [...prev, newPass]
       })
@@ -74,42 +121,18 @@ function App() {
     }
   }
 
-  function handleEdit(index) {
+  function handleEdit(index, id) {
     urlRef.current.value = passes[index].url
     userRef.current.value = passes[index].user
     passRef.current.value = passes[index].pass
 
-    handleDelete(index)
+    handleDelete(index, id)
   }
 
-  function toastHandler(action) {
-    if (action == "delete") {
-      toastContentRef.current.textContent = "Deleted Successfully"
-    }
-    else if (action == "copy") {
-      toastContentRef.current.textContent = "Text Copied"
-    }
-    else if (action == "save") {
-      toastContentRef.current.textContent = "Password Saved"
-    }
-    else if (action == "error") {
-      toastContentRef.current.textContent = "Fix errors"
-    }
-
-    lowerBarRef.current.classList.remove("hideLowerBar")
-    toastRef.current.classList.remove("hideBox")
-    lowerBarRef.current.offsetWidth;
-    lowerBarRef.current.classList.add("hideLowerBar")
-    setTimeout(() => {
-      toastRef.current.classList.add("hideBox")
-      lowerBarRef.current.classList.remove("hideLowerBar")
-    }, 2000)
-  }
 
   return (
     <>
-      <Navbar />
-      <main className='flex-1 bg-[#d8dcd5] flex flex-col items-center relative'>
+      <main className='flex-1 h-[100vh] bg-[#d8dcd5] flex flex-col items-center relative overflow-auto'>
         <div className="topBox w-2/3 mt-24 flex flex-col gap-5">
 
           <div className="logoBox text-center">
@@ -144,7 +167,7 @@ function App() {
           </button>
         </div>
 
-        <div className="lowerBox w-2/3 flex flex-col gap-2">
+        <div className="lowerBox w-2/3 flex flex-col gap-2 pb-4">
 
           <h2 className='font-bold text-xl'>Your Passwords</h2>
 
@@ -155,48 +178,40 @@ function App() {
             <p className='bg-green-900 text-white font-bold p-2'>Password</p>
             <p className='bg-green-900 text-white font-bold p-2'>Actions</p>
             {/* table content */}
+            {passes.length == 0 && <><p className='border border-b-black'>No data to show</p><p className='border border-b-black'></p><p className='border border-b-black'></p><p className='border border-b-black'></p></>}
             {passes.map((pass, index) => {
               return (
-                <Fragment key={index}>
+                <Fragment key={pass._id}>
                   <div className="dataUrlBox bg-green-100 border-b border-black p-1 flex justify-center gap-1 items-center">
                     <p>{pass.url}</p>
-                    <button className="copyBtn" onClick={() => { navigator.clipboard.writeText(pass.url); toastHandler("copy") }}><MdContentCopy /></button>
+                    <button className="copyBtn" onClick={() => { navigator.clipboard.writeText(pass.url); toast.success("Text copied!!") }}><MdContentCopy /></button>
                   </div>
                   <div className="dataUserBox bg-green-100 border-b border-black p-1 flex justify-center gap-1 items-center">
-                    <p>{pass.user}</p>
-                    <button className="copyBtn" onClick={() => { navigator.clipboard.writeText(pass.user); toastHandler("copy") }}><MdContentCopy /></button>
+                    <p>{pass.userName}</p>
+                    <button className="copyBtn" onClick={() => { navigator.clipboard.writeText(pass.userName); toast.success("Text copied!!") }}><MdContentCopy /></button>
                   </div>
                   <div className="dataPassBox bg-green-100 border-b border-black p-1 flex justify-center gap-1 items-center">
-                    <p className='px-1'>{visible[index] ? pass.pass : "••••••"}</p>
+                    <p className='px-1'>{visible[index] ? pass.password : "••••••"}</p>
                     <button
                       onClick={() => toggleVisibility(index)}
                       className="toggleBtn"
                     >
-                      {visible[index] ? <GrFormViewHide /> : <GrFormView />}
+                      {visible[index] ? <GrFormView />: <GrFormViewHide />}
                     </button>
-                    <button className="copyBtn" onClick={() => { navigator.clipboard.writeText(pass.pass); toastHandler("copy") }}><MdContentCopy /></button>
+                    <button className="copyBtn" onClick={() => { navigator.clipboard.writeText(pass.password); toast.success("Text copied!!") }}><MdContentCopy /></button>
                   </div>
                   <div className="actionBox bg-green-100 border-b border-black p-1 flex justify-center gap-1 items-center">
-                    <button onClick={() => handleEdit(index)}><AiFillEdit /></button>
-                    <button onClick={() => { handleDelete(index); toastHandler("delete") }}><RiDeleteBin6Fill /></button>
+                    <button onClick={() => handleEdit(index, pass._id)}><AiFillEdit /></button>
+                    <button onClick={() => { handleDelete(index, pass._id); }}><RiDeleteBin6Fill /></button>
                   </div>
                 </Fragment>
               )
             })}
           </div>
         </div>
-
-        <div ref={toastRef} className="toast hideBox bg-black absolute top-2 right-2 text-white flex flex-col justify-between w-[200px]">
-          <button className="topBar text-lg flex justify-end self-end" onClick={() => {
-            toastRef.current.classList.add("hideBox");
-          }}><IoIosClose /></button>
-          <p ref={toastContentRef} className='text-sm text-center mb-2'>Text copied!!!</p>
-          <div className="lowerBar h-[8px] bg-blue-900" ref={lowerBarRef}></div>
-        </div>
       </main>
-      <Footer />
     </>
   )
 }
 
-export default App
+export default Home
